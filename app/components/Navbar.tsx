@@ -5,9 +5,14 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-black/20 backdrop-blur-sm border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        <div className="flex gap-2 items-center justify-between">
+          <div className="p-2.5 bg-primary rounded-full">
+            <h6 className="text-white font-bold text-sm tracking-wider ">Sb</h6>
+          </div>
         <Link href="/" className="flex flex-col">
-          <span className="text-primary font-bold text-sm tracking-wider uppercase">Subhash Engineering</span>
+          <span className="text-white font-bold text-sm tracking-wider uppercase">Subhash Engineering</span>
         </Link>
+        </div>
         <nav className="hidden md:flex gap-8 items-center text-white text-sm font-medium">
           <Link href="#services" className="hover:text-primary transition-colors">Services</Link>
           <Link href="#portfolio" className="hover:text-primary transition-colors">Portfolio</Link>

@@ -4,32 +4,32 @@ import Link from "next/link";
 export default function CoreServices() {
   const services = [
     {
-      icon: <PenTool className="text-brand mb-4" size={32} />,
+      icon: <PenTool className="text-primary mb-4" size={32} />,
       title: "Iron Works",
       description: "Heavy-duty iron structures, industrial components, and tailored frameworks for large-scale developments."
     },
     {
-      icon: <Settings className="text-brand mb-4" size={32} />,
+      icon: <Settings className="text-primary mb-4" size={32} />,
       title: "Welding Solutions",
       description: "Expert MIG, TIG, and ARC welding for seamless connections and structural integrity in any metal type."
     },
     {
-      icon: <Code className="text-brand mb-4" size={32} />,
+      icon: <Code className="text-primary mb-4" size={32} />,
       title: "Custom Fabrication",
       description: "Bespoke metal furniture, decorative features, and specialized engineering parts made to your specifications."
     },
     {
-      icon: <LayoutTemplate className="text-brand mb-4" size={32} />,
+      icon: <LayoutTemplate className="text-primary mb-4" size={32} />,
       title: "Steel Structures",
       description: "Roofing trusses, warehouse frames, and mezzanine floors engineered for maximum load-bearing capacity."
     },
     {
-      icon: <SquareDashedBottom className="text-brand mb-4" size={32} />,
+      icon: <SquareDashedBottom className="text-primary mb-4" size={32} />,
       title: "Gates & Grills",
       description: "Modern gates, secure window grills, and architectural railings that combine safety with elegant design."
     },
     {
-      icon: <Wrench className="text-brand mb-4" size={32} />,
+      icon: <Wrench className="text-primary mb-4" size={32} />,
       title: "Maintenance",
       description: "Anti-rust treatment, structural repairs, and periodic inspections for industrial and residential assets."
     }
@@ -53,7 +53,7 @@ export default function CoreServices() {
               <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
                 {service.description}
               </p>
-              <Link href="#contact" className="text-brand font-semibold flex items-center gap-2 group-hover:text-brand-dark transition-colors inline-block text-sm">
+              <Link href="#contact" className="text-primary font-semibold flex items-center gap-2 group-hover:text-primary-dark transition-colors inline-block text-sm">
                 Learn More
                 <span className="transform group-hover:translate-x-1 transition-transform">→</span>
               </Link>
