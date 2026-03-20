@@ -10,6 +10,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-primary: #f99b28;
+  --color-primary-hover: #e08316;
+  --color-brand: #0554a9;
+  --color-brand-dark: #00458a;
+  --color-brand-light: #eff6ff;
 }
 
 @media (prefers-color-scheme: dark) {
