@@ -1,64 +1,130 @@
+"use client";
+
 import { Code, Settings, PenTool, LayoutTemplate, SquareDashedBottom, Wrench } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useState, useRef } from "react";
 
 export default function CoreServices() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const services = [
     {
-      icon: <PenTool className="text-primary mb-4" size={32} />,
+      icon: <PenTool size={28} />,
       title: "Iron Works",
-      description: "Heavy-duty iron structures, industrial components, and tailored frameworks for large-scale developments."
+      description: "Heavy-duty iron structures and tailored frameworks for large-scale developments.",
+      tag: "Industrial"
     },
     {
-      icon: <Settings className="text-primary mb-4" size={32} />,
+      icon: <Settings size={28} />,
       title: "Welding Solutions",
-      description: "Expert MIG, TIG, and ARC welding for seamless connections and structural integrity in any metal type."
+      description: "Expert MIG, TIG, and ARC welding for structural integrity.",
+      tag: "Expert"
     },
     {
-      icon: <Code className="text-primary mb-4" size={32} />,
+      icon: <Code size={28} />,
       title: "Custom Fabrication",
-      description: "Bespoke metal furniture, decorative features, and specialized engineering parts made to your specifications."
+      description: "Bespoke metal furniture and specialized engineering parts.",
+      tag: "Bespoke"
     },
     {
-      icon: <LayoutTemplate className="text-primary mb-4" size={32} />,
+      icon: <LayoutTemplate size={28} />,
       title: "Steel Structures",
-      description: "Roofing trusses, warehouse frames, and mezzanine floors engineered for maximum load-bearing capacity."
+      description: "Roofing trusses and warehouse frames for maximum capacity.",
+      tag: "Structural"
     },
     {
-      icon: <SquareDashedBottom className="text-primary mb-4" size={32} />,
+      icon: <SquareDashedBottom size={28} />,
       title: "Gates & Grills",
-      description: "Modern gates, secure window grills, and architectural railings that combine safety with elegant design."
+      description: "Modern gates, window grills, and architectural railings.",
+      tag: "Design"
     },
     {
-      icon: <Wrench className="text-primary mb-4" size={32} />,
+      icon: <Wrench size={28} />,
       title: "Maintenance",
-      description: "Anti-rust treatment, structural repairs, and periodic inspections for industrial and residential assets."
+      description: "Anti-rust treatment and structural repairs.",
+      tag: "Care"
     }
   ];
 
   return (
-    <section id="services" className="py-24 bg-slate-50 border-t border-slate-100">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="mb-16 max-w-2xl">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6 tracking-tight">Our Core Services</h2>
-          <p className="text-slate-600 text-lg leading-relaxed">
-            Comprehensive engineering and fabrication services designed for durability and aesthetic precision.
+    <section ref={sectionRef} id="services" className="py-12 sm:py-20 lg:py-28 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 to-transparent"></div>
+      <div className="absolute top-20 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-brand/5 rounded-full blur-3xl"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className={`text-center max-w-2xl sm:max-w-3xl mx-auto mb-10 sm:mb-16 lg:mb-20 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-4 sm:mb-6 border border-primary/20">
+            What We Offer
+          </span>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-800 mb-3 sm:mb-6 tracking-tight">Our Core Services</h2>
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg leading-relaxed px-2 sm:px-0">
+            Comprehensive engineering and fabrication services designed for durability and precision.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {services.map((service, index) => (
-            <div key={index} className="bg-white p-10 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg transition-shadow group flex flex-col h-full">
-              {service.icon}
-              <h3 className="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-8 flex-grow">
+            <div 
+              key={index} 
+              className={`group relative bg-white/80 backdrop-blur-sm p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary/30 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${index * 50 + 100}ms` }}
+            >
+              <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-primary via-yellow-400 to-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+              
+              <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-600 text-[10px] sm:text-xs font-semibold px-2 sm:px-3 py-1 rounded-full mb-4 sm:mb-6 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-300">
+                {service.tag}
+              </span>
+              
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center text-primary mb-4 sm:mb-6 group-hover:scale-105 group-hover:shadow-md group-hover:shadow-primary/20 transition-all duration-300">
+                {service.icon}
+              </div>
+              
+              <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 sm:mb-4 group-hover:text-primary transition-colors">{service.title}</h3>
+              
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6">
                 {service.description}
               </p>
-              <Link href="#contact" className="text-primary font-semibold flex items-center gap-2 group-hover:text-primary-dark transition-colors inline-block text-sm">
+              
+              <Link href="#contact" className="group/link inline-flex items-center gap-2 text-primary font-semibold text-xs sm:text-sm hover:text-primary-hover transition-colors duration-300">
                 Learn More
-                <span className="transform group-hover:translate-x-1 transition-transform">→</span>
+                <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center transform group-hover/link:translate-x-1 group-hover/link:bg-primary group-hover/link:text-white transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-4 sm:h-4"><path d="m9 18 6-6-6-6"/></svg>
+                </span>
               </Link>
             </div>
           ))}
+        </div>
+
+        <div className={`mt-10 sm:mt-16 lg:mt-20 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 bg-gradient-to-r from-gray-50 to-white p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 shadow-lg">
+            <div className="text-center sm:text-left">
+              <h4 className="text-base sm:text-lg font-bold text-gray-800 mb-1">Need a Custom Solution?</h4>
+              <p className="text-gray-500 text-xs sm:text-sm">Our team is ready to help.</p>
+            </div>
+            <Link href="#contact" className="shrink-0 bg-primary hover:bg-primary-hover text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 flex items-center gap-2 w-full sm:w-auto justify-center">
+              <span className="text-sm sm:text-base">Get Free Consultation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

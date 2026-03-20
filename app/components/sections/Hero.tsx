@@ -1,10 +1,25 @@
+"use client";
+
 import Link from "next/link";
-import { CheckCircle, Crosshair } from "lucide-react";
+import { CheckCircle, Crosshair, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
-    <section className="relative h-screen w-full flex items-center justify-start overflow-hidden">
-      {/* Background Video */}
+    <section className="relative min-h-screen w-full flex items-center justify-start overflow-hidden">
       <div className="absolute inset-0 w-full h-full z-0">
         <video
           autoPlay
@@ -13,59 +28,84 @@ export default function Hero() {
           playsInline
           className="object-cover w-full h-full"
         >
-          <source src="/videos/bg.mp4" type="video/mp4" />
+          <source src={isMobile ? "/videos/mp4-mobile.mp4" : "/videos/bg.mp4"} type="video/mp4" />
         </video>
-        {/* Overlay to ensure text readability - made lighter */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/50 to-transparent z-10"></div>
-        <div className="absolute inset-0 bg-black/10 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/80 to-black/40 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-10"></div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 w-full flex flex-col text-white mt-20">
-        {/* <div className="inline-flex items-center gap-2 bg-primary/20 text-primary px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-6 w-fit border border-primary/30 shadow-[0_0_15px_rgba(249,155,40,0.3)]">
-          Precision & Power
-        </div> */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 w-full flex flex-col text-white pt-24 pb-12">
+        <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="inline-flex items-center gap-2 bg-primary/20 backdrop-blur-sm text-primary px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[10px] sm:text-xs font-bold tracking-widest uppercase mb-6 w-fit border border-primary/30 shadow-[0_0_15px_rgba(249,155,40,0.3)]">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+            Premium Engineering Solutions
+          </div>
+        </div>
         
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
-          Precision Metal <br />
-          <span className="text-primary text-6xl md:text-8xl drop-shadow-md">Engineering</span>
+        <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="text-white/90">Precision Metal</span>
+          <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-300 to-primary animate-text-shimmer drop-shadow-lg">
+            Engineering
+          </span>
         </h1>
         
-        <p className="text-lg md:text-xl text-slate-200 max-w-xl mb-10 leading-relaxed font-medium">
-          Custom fabrication, welding, and steel solutions with unmatched quality. We transform industrial visions into structural reality.
+        <p className={`text-sm sm:text-base md:text-lg text-slate-200 max-w-xl mb-6 sm:mb-8 leading-relaxed font-medium transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          Custom fabrication, welding, and steel solutions with unmatched quality. 
+          <span className="text-primary font-semibold hidden sm:inline"> We transform industrial visions into structural reality.</span>
         </p>
         
-        <div className="flex flex-wrap items-center gap-4 mb-16">
-          <Link href="#quote" className="bg-primary hover:bg-primary-hover text-white font-semibold px-8 py-4 rounded-md transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/30">
-            Get a Quote
+        <div className={`flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-12 transition-all duration-700 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <Link href="#quote" className="group text-center bg-primary hover:bg-primary-hover text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 shadow-lg shadow-primary/40 hover:shadow-xl hover:shadow-primary/50 hover:-translate-y-0.5">
+            <span className="flex items-center justify-center gap-2">
+              Get a Quote
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
           </Link>
-          <Link href="#portfolio" className="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white font-semibold px-8 py-4 rounded-md transition-colors">
-            View Projects
+          <Link href="#portfolio" className="group text-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5">
+            <span className="flex items-center justify-center gap-2">
+              View Projects
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+            </span>
           </Link>
         </div>
 
-        {/* Feature Tags */}
-        <div className="flex flex-wrap items-center gap-6 md:gap-12">
-          <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-lg">
-            <div className="bg-primary/20 p-2 rounded-full text-primary">
-              <CheckCircle size={20} />
+        <div className={`grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 transition-all duration-700 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="group flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+            <div className="bg-primary/20 p-2 rounded-lg text-primary group-hover:scale-110 transition-transform duration-300">
+              <CheckCircle size={18} />
             </div>
             <div>
-              <div className="font-semibold text-sm">ISO Certified</div>
-              <div className="text-slate-300 text-xs">Global Standards</div>
+              <div className="font-bold text-xs sm:text-sm">ISO Certified</div>
+              <div className="text-slate-300 text-[10px] sm:text-xs hidden sm:block">Global Standards</div>
             </div>
           </div>
           
-          <div className="flex items-center gap-3 bg-white/5 backdrop-blur-sm border border-white/10 px-5 py-3 rounded-lg">
-            <div className="bg-primary/20 p-2 rounded-full text-primary">
-              <Crosshair size={20} />
+          <div className="group flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+            <div className="bg-primary/20 p-2 rounded-lg text-primary group-hover:scale-110 transition-transform duration-300">
+              <Crosshair size={18} />
             </div>
             <div>
-              <div className="font-semibold text-sm">99% Accuracy</div>
-              <div className="text-slate-300 text-xs">CNC Precision</div>
+              <div className="font-bold text-xs sm:text-sm">99.8% Accuracy</div>
+              <div className="text-slate-300 text-[10px] sm:text-xs hidden sm:block">CNC Precision</div>
+            </div>
+          </div>
+
+          <div className="group flex items-center gap-3 bg-white/5 backdrop-blur-md border border-white/10 px-4 py-3 rounded-xl hover:bg-white/10 hover:border-primary/30 transition-all duration-300">
+            <div className="bg-primary/20 p-2 rounded-lg text-primary group-hover:scale-110 transition-transform duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+            </div>
+            <div>
+              <div className="font-bold text-xs sm:text-sm">15+ Years</div>
+              <div className="text-slate-300 text-[10px] sm:text-xs hidden sm:block">Experience</div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="scroll-indicator z-20 flex-col items-center gap-2 hidden sm:flex">
+        <span className="text-white/50 text-xs tracking-widest uppercase">Scroll</span>
+        <ChevronDown className="text-primary animate-bounce" size={20} />
       </div>
     </section>
   );
