@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { CheckCircle, Crosshair, ChevronDown } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -17,16 +18,25 @@ export default function Hero() {
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
-    // Fallback: automatically lift the loading screen if video takes too long
+    if (videoRef.current && videoRef.current.readyState >= 3) {
+      setIsVideoLoaded(true);
+    }
+
     const timer = setTimeout(() => {
       setIsVideoLoaded(true);
-    }, 5000); // 5 seconds fallback
+    }, 5000); 
 
     return () => {
       window.removeEventListener('resize', checkMobile);
       clearTimeout(timer);
     };
   }, []);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [isMobile]);
 
   return (
     <section className="relative min-h-screen w-full flex items-center justify-start overflow-hidden">
@@ -45,7 +55,7 @@ export default function Hero() {
 
       <div className="absolute inset-0 w-full h-full z-0">
         <video
-          key={isMobile ? "mobile-video" : "desktop-video"}
+          ref={videoRef}
           autoPlay
           loop
           muted
