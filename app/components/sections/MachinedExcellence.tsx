@@ -34,43 +34,49 @@ export default function MachinedExcellence() {
         <div
           className={`grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-0 bg-white shadow-xl rounded-2xl sm:rounded-3xl overflow-hidden mb-12 sm:mb-20 border border-gray-100 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="relative p-6 sm:p-10 border-b sm:border-b-0 sm:border-r border-gray-100 bg-white hover:bg-primary/5 transition-all duration-300 group">
-            <div className="text-primary mb-4 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform">
+          <div className="relative p-6 sm:p-10 border-b sm:border-b-0 sm:border-r border-gray-100 bg-white hover:bg-primary/5 transition-all duration-300 group flex items-center gap-4 sm:block">
+            <div className="text-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform shrink-0 sm:mb-4">
               <Compass size={24} className="sm:hidden" />
               <Compass size={28} className="hidden sm:block" />
             </div>
-            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors text-center sm:text-left">
-              Custom Fabrication
-            </h3>
-            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-center sm:text-left">
-              Tailored metal solutions for architectural requirements.
-            </p>
+            <div className="flex-1">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 group-hover:text-primary transition-colors text-left">
+                Custom Fabrication
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-left">
+                Tailored metal solutions for architectural requirements.
+              </p>
+            </div>
           </div>
 
-          <div className="relative p-6 sm:p-10 border-b sm:border-b-0 sm:border-r border-gray-100 bg-white hover:bg-primary/5 transition-all duration-300 group">
-            <div className="text-primary mb-4 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform">
+          <div className="relative p-6 sm:p-10 border-b sm:border-b-0 sm:border-r border-gray-100 bg-white hover:bg-primary/5 transition-all duration-300 group flex items-center gap-4 sm:block">
+            <div className="text-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform shrink-0 sm:mb-4">
               <Hammer size={24} className="sm:hidden" />
               <Hammer size={28} className="hidden sm:block" />
             </div>
-            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors text-center sm:text-left">
-              Professional Welding
-            </h3>
-            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-center sm:text-left">
-              Certified welding processes for structural integrity.
-            </p>
+            <div className="flex-1">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 group-hover:text-primary transition-colors text-left">
+                Professional Welding
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-left">
+                Certified welding processes for structural integrity.
+              </p>
+            </div>
           </div>
 
-          <div className="relative p-6 sm:p-10 bg-white hover:bg-primary/5 transition-all duration-300 group">
-            <div className="text-primary mb-4 flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform">
+          <div className="relative p-6 sm:p-10 bg-white hover:bg-primary/5 transition-all duration-300 group flex items-center gap-4 sm:block">
+            <div className="text-primary flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-primary/10 group-hover:scale-105 transition-transform shrink-0 sm:mb-4">
               <Factory size={24} className="sm:hidden" />
               <Factory size={28} className="hidden sm:block" />
             </div>
-            <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-2 group-hover:text-primary transition-colors text-center sm:text-left">
-              Steel Structures
-            </h3>
-            <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-center sm:text-left">
-              Large scale manufacturing for commercial spaces.
-            </p>
+            <div className="flex-1">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-800 mb-1 group-hover:text-primary transition-colors text-left">
+                Steel Structures
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed text-left">
+                Large scale manufacturing for commercial spaces.
+              </p>
+            </div>
           </div>
         </div>
 
