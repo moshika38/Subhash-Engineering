@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +19,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHome = pathname === "/";
+
   const navLinks = [
-    { href: "#services", label: "Services" },
-    { href: "#portfolio", label: "Portfolio" },
-    { href: "#about", label: "About" },
-    { href: "#contact", label: "Contact" }
+    { href: isHome ? "#services" : "/#services", label: "Services" },
+    { href: isHome ? "#portfolio" : "/#portfolio", label: "Portfolio" },
+    { href: isHome ? "#about" : "/#about", label: "About" },
+    { href: isHome ? "#contact" : "/#contact", label: "Contact" }
   ];
 
   return (
@@ -50,13 +54,16 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href="tel:+94112345678" className="group flex items-center gap-2 text-white/80 hover:text-primary transition-colors">
+          <a href="tel:+94767705308" className="group flex items-center gap-2 text-white/80 hover:text-primary transition-colors">
             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
               <Phone size={18} />
             </div>
-            <span className="text-sm font-medium">+94 11 234 5678</span>
+            <span className="text-sm font-medium">076 7705 308</span>
           </a>
-          <Link href="#contact" className="group bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 flex items-center gap-2">
+          <Link 
+            href="/quote" 
+            className="group bg-primary hover:bg-primary-hover text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 flex items-center gap-2 cursor-pointer"
+          >
             Get a Quote
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </Link>
@@ -87,9 +94,9 @@ export default function Navbar() {
             </nav>
             <div className="mt-4 pt-4 border-t border-white/10">
               <Link 
-                href="#contact" 
+                href="/quote" 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full bg-primary hover:bg-primary-hover text-white px-6 py-3.5 rounded-xl font-semibold text-center transition-colors duration-300 text-sm"
+                className="block w-full bg-primary hover:bg-primary-hover text-white px-6 py-3.5 rounded-xl font-semibold text-center transition-colors duration-300 text-sm cursor-pointer"
               >
                 Get a Quote
               </Link>

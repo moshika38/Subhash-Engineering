@@ -1,11 +1,12 @@
 "use client";
 
-import { Code, Settings, PenTool, LayoutTemplate, SquareDashedBottom, Wrench } from "lucide-react";
+import { Code, Settings, PenTool, LayoutTemplate, SquareDashedBottom, Wrench, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 export default function CoreServices() {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState<any>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,37 +31,49 @@ export default function CoreServices() {
       icon: <PenTool size={28} />,
       title: "Iron Works",
       description: "Heavy-duty iron structures and tailored frameworks for large-scale developments.",
-      tag: "Industrial"
+      tag: "Industrial",
+      image: "/services/iron_works.png",
+      detail: "Our structural iron works are engineered for heavy-duty applications. We manufacture load-bearing frame systems, safety barriers, and custom support beams using advanced heat-treated metals targeting precision tolerances safely."
     },
     {
       icon: <Settings size={28} />,
       title: "Welding Solutions",
       description: "Expert MIG, TIG, and ARC welding for structural integrity.",
-      tag: "Expert"
+      tag: "Expert",
+      image: "/services/welding.png",
+      detail: "We provide precision-grade welding across all positions including overhead and piping paths. Certified handling of TIG (Stainless/Alu) and MIG (Heavy steel) joints guaranteeing clean structural safe specs securely frame setups."
     },
     {
       icon: <Code size={28} />,
       title: "Custom Fabrication",
       description: "Bespoke metal furniture and specialized engineering parts.",
-      tag: "Bespoke"
+      tag: "Bespoke",
+      image: "/services/fabrication.png",
+      detail: "Tailored industrial-grade sheets bending, CNC component cutting, and design replication for specific prototype assemblies or architecturally styled decors safely setups securely correctly bound triggers cleanly."
     },
     {
       icon: <LayoutTemplate size={28} />,
       title: "Steel Structures",
       description: "Roofing trusses and warehouse frames for maximum capacity.",
-      tag: "Structural"
+      tag: "Structural",
+      image: "/services/steel_structures.png",
+      detail: "Large-span roofing framing setups engineered safely distributing load securely bound trusses configurations optimized safe bounds layouts framed correctly safely bound."
     },
     {
       icon: <SquareDashedBottom size={28} />,
       title: "Gates & Grills",
       description: "Modern gates, window grills, and architectural railings.",
-      tag: "Design"
+      tag: "Design",
+      image: "/services/gates.png",
+      detail: "Decorative precision framing laser setups securely correctly boundary guards sets safety panels cleanly layouts framed."
     },
     {
       icon: <Wrench size={28} />,
       title: "Maintenance",
       description: "Anti-rust treatment and structural repairs.",
-      tag: "Care"
+      tag: "Care",
+      image: "/services/maintenance.png",
+      detail: "Protective coating applications framing safety checks repairs setup securely correctly bound triggers layout framed correctly safely bound."
     }
   ];
 
@@ -104,12 +117,15 @@ export default function CoreServices() {
                 {service.description}
               </p>
               
-              <Link href="#contact" className="group/link inline-flex items-center gap-2 text-primary font-semibold text-xs sm:text-sm hover:text-primary-hover transition-colors duration-300">
+              <button 
+                onClick={() => setSelectedService(service)} 
+                className="group/link inline-flex items-center gap-2 text-primary font-semibold text-xs sm:text-sm hover:text-primary-hover transition-colors duration-300 cursor-pointer"
+              >
                 Learn More
                 <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-primary/10 flex items-center justify-center transform group-hover/link:translate-x-1 group-hover/link:bg-primary group-hover/link:text-white transition-all duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-4 sm:h-4"><path d="m9 18 6-6-6-6"/></svg>
                 </span>
-              </Link>
+              </button>
             </div>
           ))}
         </div>
@@ -127,6 +143,29 @@ export default function CoreServices() {
           </div>
         </div>
       </div>
+      {selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md p-4 animate-fade-in" onClick={() => setSelectedService(null)}>
+          <div className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl animate-scale-in relative border border-gray-100" onClick={(e) => e.stopPropagation()}>
+            <button className="absolute top-4 right-4 p-2 rounded-full bg-black/10 hover:bg-black/20 text-gray-800 transition-colors z-10" onClick={() => setSelectedService(null)}>
+              <X size={20} />
+            </button>
+            
+            <img src={selectedService.image} alt={selectedService.title} className="w-full h-48 sm:h-64 object-cover" />
+            
+            <div className="p-6 sm:p-8">
+              <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">
+                {selectedService.tag}
+              </span>
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">{selectedService.title}</h3>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">{selectedService.detail || selectedService.description}</p>
+              
+              <Link href="/quote" className="inline-flex justify-center items-center w-full bg-primary hover:bg-primary-hover text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-primary/20 text-center">
+                Get a Quote
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

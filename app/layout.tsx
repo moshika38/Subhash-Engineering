@@ -27,9 +27,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${inter.variable} h-full antialiased scroll-smooth`}
+      className={`${geistSans.variable} ${inter.variable} h-full font-sans antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="font-sans min-h-full flex flex-col">
+      <body className="font-sans min-h-full flex flex-col" suppressHydrationWarning>
         <Navbar />
         <main className="flex-1">
           {children}

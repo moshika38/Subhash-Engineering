@@ -93,15 +93,12 @@ export default function Advantage() {
             <div className="relative w-full max-w-sm sm:max-w-md lg:max-w-none mx-auto aspect-square">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-2xl sm:rounded-3xl"></div>
               <div className="absolute inset-2 sm:inset-4 border border-white/10 rounded-xl sm:rounded-3xl"></div>
-              <div className="absolute inset-4 sm:inset-8 border border-white/5 rounded-lg sm:rounded-2xl flex items-center justify-center bg-white/5 backdrop-blur-sm">
-                <div className="relative">
-                  <Settings size={60} className="sm:w-[80px] sm:h-[80px] lg:w-[120px] lg:h-[120px] text-white/10 animate-spin-slow" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-full bg-gradient-to-br from-primary to-yellow-400 flex items-center justify-center shadow-xl shadow-primary/40 animate-pulse">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-7 sm:h-7 lg:w-9 lg:h-9"><path d="M12 2v4"/><path d="m6.343 6.343-2.829 2.829"/><path d="M2 12h4"/><path d="m6.343 17.657-2.829-2.829"/><path d="M12 18v4"/><path d="m17.657 17.657-2.829-2.829"/><path d="M18 12h4"/><path d="m17.657 6.343-2.829 2.829"/></svg>
-                    </div>
-                  </div>
-                </div>
+              <div className="absolute inset-4 sm:inset-8 border border-white/5 rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
+                <img 
+                  src="/images/about.png" 
+                  alt="Subhash Engineering Advantage" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                />
               </div>
 
               <div className="absolute -top-2 -right-2 sm:top-0 sm:right-0 w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary/40 to-yellow-400/40 rounded-xl sm:rounded-2xl backdrop-blur-md flex items-center justify-center border border-primary/30 shadow-lg shadow-primary/20 animate-float">
