@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Clock, Facebook, Twitter, Instagram, Linkedin } fr
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden">
+    <footer id="contact" className="bg-gradient-to-b from-gray-900 to-black text-white relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-0 w-48 sm:w-64 lg:w-96 h-48 sm:h-64 lg:h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute top-0 right-0 w-32 sm:w-48 lg:w-64 h-32 sm:h-48 lg:h-64 bg-brand/5 rounded-full blur-3xl"></div>

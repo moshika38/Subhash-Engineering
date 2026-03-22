@@ -80,7 +80,7 @@ export default function MachinedExcellence() {
           
           <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden h-64 sm:h-80 lg:h-[500px] group shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1504917595423-ce36aadd2fbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+              src="images/about1.png" 
               alt="Advanced Welding" 
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />

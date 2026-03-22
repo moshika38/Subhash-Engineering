@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${inter.variable} h-full antialiased scroll-smooth`}
     >
       <body className="font-sans min-h-full flex flex-col">
         <Navbar />

@@ -53,7 +53,7 @@ export default function Portfolio() {
         <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="sm:col-span-2 lg:col-span-5 h-64 sm:h-80 lg:h-[450px] rounded-2xl sm:rounded-3xl overflow-hidden group relative shadow-lg sm:shadow-xl">
             <img 
-              src="images/sample.jpg" 
+              src="images/steel.jpg" 
               alt="Steel Framed Structure" 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
