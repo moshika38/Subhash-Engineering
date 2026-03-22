@@ -131,8 +131,8 @@ export default function Footer() {
               <span>Developed by <a href="https://www.facebook.com/profile.php?id=61587246540726" target="_blank" className="text-primary hover:underline">LogicBit Labs</a></span>
             </div>
             <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-gray-500">
-              <Link href="#" className="hover:text-primary transition-colors">Privacy Policy</Link>
-              <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
+              <Link href="/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Privacy Policy</Link>
+              <Link href="/terms" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Terms</Link>
             </div>
           </div>
         </div>
