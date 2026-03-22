@@ -24,7 +24,7 @@ export default function Hero() {
 
     const timer = setTimeout(() => {
       setIsVideoLoaded(true);
-    }, 5000); 
+    }, 10000); 
 
     return () => {
       window.removeEventListener('resize', checkMobile);
@@ -61,7 +61,7 @@ export default function Hero() {
           muted
           playsInline
           className={`object-cover w-full h-full transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-          onLoadedData={() => setIsVideoLoaded(true)}
+          onCanPlay={() => setIsVideoLoaded(true)}
         >
           <source src={isMobile ? "/videos/mp4-mobile.mp4" : "/videos/bg.mp4"} type="video/mp4" />
         </video>
