@@ -122,6 +122,19 @@ export default function Footer() {
             </ul>
           </div>
         </div>
+        {/* Google Map Integration */}
+        <div className="mt-8 mb-10 rounded-2xl overflow-hidden h-64 sm:h-80 border border-white/10 shadow-xl shadow-black/30">
+          <iframe 
+            src="https://maps.google.com/maps?q=6.968693,81.0196244&z=15&output=embed" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0 }} 
+            allowFullScreen 
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="opacity-80 hover:opacity-100 transition-opacity duration-300"
+          ></iframe>
+        </div>
 
         <div className="border-t border-white/10 pt-6 sm:pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
