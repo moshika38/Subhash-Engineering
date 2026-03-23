@@ -134,7 +134,7 @@ export default function Hero() {
             </span>
           </Link>
           <Link
-            href="#portfolio"
+            href="/gallery"
             className="group text-center bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/25 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5"
           >
             <span className="flex items-center justify-center gap-2">
