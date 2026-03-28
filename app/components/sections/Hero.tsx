@@ -89,21 +89,20 @@ export default function Hero() {
         <h1
           className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 leading-[1.1] transition-all duration-700 delay-400 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <span className="text-white/90">Precision Metal</span>
+          <span className="text-white/90">Subhash Engineering</span>
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-yellow-300 to-primary animate-text-shimmer drop-shadow-lg">
-            Engineering
+            Sri Lanka
           </span>
         </h1>
 
         <p
           className={`text-sm sm:text-base md:text-lg text-slate-200 max-w-xl mb-6 sm:mb-8 leading-relaxed font-medium transition-all duration-700 delay-600 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          Custom fabrication, welding, and steel solutions with unmatched
-          quality.
+          Subhash Engineering delivers custom metal fabrication, welding, and steel structures with unmatched precision from Hali-Ela, Sri Lanka.
           <span className="text-primary font-semibold hidden sm:inline">
             {" "}
-            We transform industrial visions into structural reality.
+            Trusted island-wide since 2007.
           </span>
         </p>
 
