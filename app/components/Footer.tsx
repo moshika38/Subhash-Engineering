@@ -125,7 +125,7 @@ export default function Footer() {
         {/* Google Map Integration */}
         <div className="mt-8 mb-10 rounded-2xl overflow-hidden h-64 sm:h-80 border border-white/10 shadow-xl shadow-black/30">
           <iframe 
-            src="https://maps.google.com/maps?q=6.968693,81.0196244&z=15&output=embed" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.6725!2d81.0196244!3d6.968693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTgnMDcuMyJOIDgxwrAwMScxMC43IkU!5e0!3m2!1sen!2slk!4v1711786000000!5m2!1sen!2slk" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

@@ -1,14 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle, Crosshair, ChevronDown } from "lucide-react";
 import { useEffect, useState, useRef } from "react";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -18,13 +19,9 @@ export default function Hero() {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
-    if (videoRef.current && videoRef.current.readyState >= 3) {
-      setIsVideoLoaded(true);
-    }
-
     const timer = setTimeout(() => {
-      setIsVideoLoaded(true);
-    }, 10000);
+      setIsImageLoaded(true);
+    }, 5000);
 
     return () => {
       window.removeEventListener("resize", checkMobile);
@@ -32,17 +29,11 @@ export default function Hero() {
     };
   }, []);
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-    }
-  }, [isMobile]);
-
   return (
     <section className="relative min-h-screen w-full flex items-center justify-start overflow-hidden">
       {/* Loading Screen Overlay */}
       <div
-        className={`fixed inset-0 bg-neutral-950 z-[9999] flex flex-col items-center justify-center transition-opacity duration-700 ease-out ${isVideoLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}
+        className={`fixed inset-0 bg-neutral-950 z-[9999] flex flex-col items-center justify-center transition-opacity duration-700 ease-out ${isImageLoaded ? "opacity-0 pointer-events-none" : "opacity-100"}`}
       >
         <div className="relative flex flex-col items-center">
           {/* Double Concentric Spinner */}
@@ -57,21 +48,39 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="absolute inset-0 w-full h-full z-0">
+      <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
+        {/* Static Image Background (Fallback/Initial) */}
+        <Image
+          src={isMobile ? "/images/bg-mobile.jpg" : "/images/bg.jpg"}
+          alt="Subhash Engineering Background"
+          fill
+          priority
+          className={`object-cover w-full h-full transition-opacity duration-1000 ${isImageLoaded ? "opacity-100" : "opacity-0"}`}
+          onLoad={() => setIsImageLoaded(true)}
+        />
+        
+        {/* Premium Video Background (Fades in when ready) */}
         <video
-          ref={videoRef}
+          key={isMobile ? "mobile" : "desktop"} // Re-render when switching devices
           autoPlay
           loop
           muted
           playsInline
-          className={`object-cover w-full h-full transition-opacity duration-1000 ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
-          onCanPlay={() => setIsVideoLoaded(true)}
+          preload="auto"
+          className={`absolute inset-0 object-cover w-full h-full transition-opacity duration-[3000ms] ease-in-out ${isVideoLoaded ? "opacity-100" : "opacity-0"}`}
+          onCanPlayThrough={() => setIsVideoLoaded(true)}
+          onLoadedData={() => {
+            // High confidence fallback
+            setTimeout(() => setIsVideoLoaded(true), 1000);
+          }}
         >
           <source
             src={isMobile ? "/videos/mp4-mobile.mp4" : "/videos/bg.mp4"}
             type="video/mp4"
           />
         </video>
+
+        {/* Existing Overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/100 via-black/70 to-black/10 z-10"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/10 z-10"></div>
       </div>

@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     "Subhash Engineering – Sri Lanka's #1 precision metal fabrication company in Hali-Ela. Expert iron works, welding, steel structures & custom fabrication since 2007. Call 076 7705 308 for a free quote.",
   keywords: [
     "Subhash",
+    "subhash",
+    "subhash badulla",
+    "subhash hali-ela",
+    "subhash eng",
     "Subhash Engineering",
     "Subhash Engineering Sri Lanka",
     "Subash Engineering",
