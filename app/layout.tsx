@@ -24,10 +24,13 @@ export const metadata: Metadata = {
   keywords: [
     "Subhash",
     "subhash",
+    "Subhash Engineering",
+    "subhash eng",
+    "subhash sri lanka",
+    "subhash srilanka",
+    "subhash sl",
     "subhash badulla",
     "subhash hali-ela",
-    "subhash eng",
-    "Subhash Engineering",
     "Subhash Engineering Sri Lanka",
     "Subash Engineering",
     "metal fabrication Sri Lanka",
@@ -48,6 +51,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.subhashengineering.lk",
   },
+
+   
+  icons: {
+    icon: [
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: { url: '/apple-touch-icon.png', sizes: '180x180' },
+  },
+
   openGraph: {
     title: "Subhash Engineering | Precision Metal Works Sri Lanka",
     description:
